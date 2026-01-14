@@ -1,0 +1,14 @@
+.card {
+  border: 1px solid #ccc;
+  padding: 15px;
+  max-width: 600px;
+}
+
+.active {
+  color: green;
+  font-weight: bold;
+}
+
+.inactive {
+  color: gray;
+}

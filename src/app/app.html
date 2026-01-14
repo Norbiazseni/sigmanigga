@@ -1,9 +1,24 @@
-<nav>
-  <a routerLink="/">Dashboard</a> |
-  <a routerLink="/challenges">Kihívások</a> |
-  <a routerLink="/challenges/add">Új kihívás</a>
-</nav>
+<header class="header">
+  <h1>🎯 SkillForge</h1>
+  <p class="subtitle">Online tanulási kihívások</p>
 
-<hr />
+  <nav>
+    <a routerLink="/" routerLinkActive="active">
+      Dashboard
+    </a>
+    <a routerLink="/challenges" routerLinkActive="active">
+      Kihívások
+    </a>
+    <a routerLink="/challenges/add" routerLinkActive="active">
+      Új kihívás
+    </a>
+  </nav>
+</header>
 
-<router-outlet></router-outlet>
+<main class="content">
+  <router-outlet></router-outlet>
+</main>
+
+<footer class="footer">
+  <p>© 2026 SkillForge – Angular + Laravel CRUD</p>
+</footer>

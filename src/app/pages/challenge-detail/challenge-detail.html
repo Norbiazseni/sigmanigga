@@ -1,1 +1,33 @@
-<p>challenge-detail works!</p>
+<h2>Kihívás részletei</h2>
+
+<p *ngIf="loading">Betöltés...</p>
+<p *ngIf="error" style="color:red">{{ error }}</p>
+
+<div *ngIf="!loading && challenge" class="card">
+
+  <h3>{{ challenge.title }}</h3>
+
+  <p><strong>Kategória:</strong> {{ challenge.category }}</p>
+  <p><strong>Nehézség:</strong> {{ challenge.difficulty }}</p>
+  <p><strong>Jutalom pont:</strong> {{ challenge.rewardPoints }}</p>
+  <p><strong>Időtartam:</strong>
+    {{ challenge.startDate }} – {{ challenge.endDate }}
+  </p>
+
+  <p>
+    <strong>Státusz:</strong>
+    <span [class.active]="isActive()" [class.inactive]="!isActive()">
+      {{ isActive() ? 'Aktív' : 'Inaktív' }}
+    </span>
+  </p>
+
+  <p><strong>Leírás:</strong></p>
+  <p>{{ challenge.description }}</p>
+
+  <button [routerLink]="['/challenges', challenge.id, 'edit']">
+    Szerkesztés
+  </button>
+
+  <button routerLink="/challenges">Vissza a listához</button>
+
+</div>

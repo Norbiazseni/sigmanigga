@@ -7,7 +7,7 @@ import { ChallengeDetail } from './pages/challenge-detail/challenge-detail';
 import { ChallengeEdit } from './pages/challenge-edit/challenge-edit';
 
 
-const routes: Routes = [
+export const routes: Routes = [
   { path: '', component: Dashboard },
   { path: 'challenges', component: ChallengeList },
   { path: 'challenges/add', component: ChallengeAdd },
