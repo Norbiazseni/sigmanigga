@@ -1,0 +1,19 @@
+<h2>Dashboard</h2>
+
+<!-- Loading -->
+<p *ngIf="loading">Betöltés...</p>
+
+<!-- Error -->
+<p *ngIf="error" style="color:red">{{ error }}</p>
+
+<div *ngIf="!loading && !error" class="stats">
+  <div class="card">
+    <h3>Aktív kihívások</h3>
+    <p>{{ activeCount }} db</p>
+  </div>
+
+  <div class="card">
+    <h3>Összpontszám</h3>
+    <p>{{ totalPoints }} pont</p>
+  </div>
+</div>

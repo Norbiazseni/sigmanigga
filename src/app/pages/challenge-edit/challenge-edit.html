@@ -1,0 +1,63 @@
+<h2>Kihívás szerkesztése</h2>
+
+<p *ngIf="loading">Betöltés...</p>
+<p *ngIf="error" style="color:red">{{ error }}</p>
+
+<form *ngIf="!loading && challenge">
+
+  <label>
+    Cím:
+    <input [(ngModel)]="challenge.title" name="title" required />
+  </label>
+  <br />
+
+  <label>
+    Kategória:
+    <select [(ngModel)]="challenge.category" name="category">
+      <option *ngFor="let c of categories" [value]="c">{{ c }}</option>
+    </select>
+  </label>
+  <br />
+
+  <label>
+    Nehézség:
+    <select [(ngModel)]="challenge.difficulty" name="difficulty">
+      <option *ngFor="let d of difficulties" [value]="d">{{ d }}</option>
+    </select>
+  </label>
+  <br />
+
+  <label>
+    Jutalom pont:
+    <input type="number" [(ngModel)]="challenge.rewardPoints" name="points" />
+  </label>
+  <br />
+
+  <label>
+    Kezdés:
+    <input type="date" [(ngModel)]="challenge.startDate" name="startDate" />
+  </label>
+  <br />
+
+  <label>
+    Vége:
+    <input type="date" [(ngModel)]="challenge.endDate" name="endDate" />
+  </label>
+  <br />
+
+  <label>
+    Aktív:
+    <input type="checkbox" [(ngModel)]="challenge.isActive" name="isActive" />
+  </label>
+  <br />
+
+  <label>
+    Leírás:
+    <textarea [(ngModel)]="challenge.description" name="description"></textarea>
+  </label>
+  <br />
+
+  <button type="button" (click)="save()">Mentés</button>
+  <button type="button" routerLink="/challenges">Mégse</button>
+
+</form>

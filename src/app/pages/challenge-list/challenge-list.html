@@ -1,0 +1,52 @@
+<h2>Kihívások listája</h2>
+
+<!-- Loading -->
+<div *ngIf="loading">Betöltés...</div>
+
+<!-- Hiba -->
+<div *ngIf="error" style="color:red">{{ error }}</div>
+
+<!-- Szűrés -->
+<label>
+  Nehézség:
+  <select [(ngModel)]="selectedDifficulty" (change)="applyFilter()">
+    <option value="">Összes</option>
+    <option value="EASY">Könnyű</option>
+    <option value="MEDIUM">Közepes</option>
+    <option value="HARD">Nehéz</option>
+  </select>
+</label>
+
+<!-- Üres lista -->
+<p *ngIf="!loading && filteredChallenges.length === 0">
+  Nincs megjeleníthető kihívás.
+</p>
+
+<table *ngIf="filteredChallenges.length > 0">
+  <thead>
+    <tr>
+      <th>Cím</th>
+      <th>Nehézség</th>
+      <th>Pont</th>
+      <th>Státusz</th>
+      <th>Műveletek</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let c of filteredChallenges">
+      <td>{{ c.title }}</td>
+      <td>{{ c.difficulty }}</td>
+      <td>{{ c.rewardPoints }}</td>
+      <td>
+        <span [class.active]="isActive(c)" [class.inactive]="!isActive(c)">
+          {{ isActive(c) ? 'Aktív' : 'Inaktív' }}
+        </span>
+      </td>
+      <td>
+        <a [routerLink]="['/challenges', c.id]">Részletek</a> |
+        <a [routerLink]="['/challenges', c.id, 'edit']">Szerkesztés</a> |
+        <button (click)="deleteChallenge(c.id!)">Törlés</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
